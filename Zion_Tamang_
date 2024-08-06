@@ -1,0 +1,72 @@
+- 👋 Hi, I’m @Zion567717
+- 👀 I’m interested in deep computer learning
+- 🌱 I’m currently learning computer engineering
+- 💞️ I’m looking to collaborate on apple, google, microsoft, netflix, amazone, nvidia
+- 📫 How to reach me ziontamang2005@gmail.com
+- 😄 Pronouns: he/him
+- ⚡ Fun fact: life is short
+
+<!---
+Zion567717/Zion567717 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+You can click the Preview link to take a look at your changes.
+--->
+Project 1: Personalized Recommendation System
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.layers import Embedding, Dense
+
+# Load data
+ratings_df = pd.read_csv('ratings.csv')
+
+# Split data into training and testing sets
+train_data, test_data = train_test_split(ratings_df, test_size=0.2, random_state=42)
+
+# Define model architecture
+model = Sequential()
+model.add(Embedding(input_dim=len(ratings_df['user_id'].unique()), output_dim=64, input_length=1))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(1, activation='sigmoid')) to
+
+# Compile model
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+Natural Language Processing for Sentiment Analysis
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+# Load data
+reviews_df = pd.read_csv('reviews.csv')
+
+# Preprocess text data
+nltk.download('vader_lexicon')
+sia = SentimentIntensityAnalyzer()
+
+# Define sentiment analysis function
+def analyze_sentiment(text):
+    sentiment_scores = sia.polarity_scores(text)
+    return sentiment_scores['compound']
+
+# Apply sentiment analysis to reviews data
+reviews_df['sentiment'] = reviews_df['text'].apply(analyze_sentiment)
+
+Time Series Forecasting for Demand Prediction
+import pandas as pd
+import numpy as np
+from statsmodels.tsa.arima_model import ARIMA
+from tensorflow.keras.layers import LSTM, Dense
+
+# Load data
+demand_df = pd.read_csv('demand.csv')
+
+# Preprocess data
+demand_df['date'] = pd.to_datetime(demand_df['date'])
+demand_df.set_index('date', inplace=True)
+
+# Define ARIMA model
+model = ARIMA(demand_df, order=(1,1,1))
+
+# Define LSTM model
+model = Sequential()
+model.add(LSTM(50, input_shape=(demand_df.shape[1], 1)))
+model.add(Dense(1))
+
